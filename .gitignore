@@ -3,3 +3,4 @@ uploads/
 .env
 process.env
 ROAR.sql
+ROAR_MAGAZINE3.sql
