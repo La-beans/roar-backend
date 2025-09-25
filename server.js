@@ -27,10 +27,6 @@ const pool = mysql.createPool({
   database: process.env.DB_NAME,
 });
 
-const upload = multer({ dest: "uploads/" });
-const password = "yourpassword"; // replace with the desired password
-const hash = await bcrypt.hash(password, 10);
-
 function authenticateToken(req, res, next) {
   const authHeader = req.headers["authorization"];
   const token = authHeader && authHeader.split(" ")[1];
