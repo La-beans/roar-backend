@@ -57,6 +57,10 @@ function authenticateToken(req, res, next) {
   });
 }
 
+//access images in the backend
+app.use('/covers', express.static('public/covers'));
+app.use('/pdfs', express.static('public/pdfs'));
+
 // Get current user info
 app.get("/api/me", authenticateToken, async (req, res) => {
   try {
