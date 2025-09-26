@@ -20,7 +20,16 @@ app.use(cors({
 app.use(express.json());
 
 //set up multer for file uploads
-const storage = multer.memoryStorage(); //configure as needed change if better storage is found
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    if (file.fieldname === "coverImage") cb(null, "public/covers/");
+    else if (file.fieldname === "pdf") cb(null, "public/pdfs/");
+    else cb(null, "public/uploads/");
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + "-" + file.originalname);
+  }
+}); //configure as needed change if better storage is found
 const upload = multer({ storage });
 
 // Connect to DB
