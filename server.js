@@ -19,6 +19,10 @@ app.use(cors({
 }));
 app.use(express.json());
 
+//set up multer for file uploads
+const storage = multer.memoryStorage(); //configure as needed change if better storage is found
+const upload = multer({ storage });
+
 // Connect to DB
 const pool = mysql.createPool({
   host: process.env.DB_HOST,
